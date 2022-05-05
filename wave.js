@@ -35,14 +35,14 @@ export class Wave {
 
     /* 그리기 함수 */
     draw(ctx) {
-        if (this.index === 0)
+        /* if (this.index === 0)
             for (let i = 0; i < this.totalPoints; i++) {
                 ctx.beginPath();
                 ctx.arc(this.points[i].x, this.points[i].y, 5, 0, 2 * Math.PI);
                 ctx.fillStyle = 'red';
                 ctx.fill();
                 ctx.closePath();
-            }
+            } */
 
         ctx.beginPath(); /* 경로 시작 */
 
