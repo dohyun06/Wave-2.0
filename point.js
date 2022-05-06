@@ -5,9 +5,9 @@ export class Point {
         this.y = y; /* 기준점의 y값 */
         this.fixedY = y; /* 기준 y값 (화면 높이의 중앙 값) */
         this.index = index;
-        this.cur = index * 8; /* 파도 번호 + 파도의 기준점 번호 */
+        this.cur = index * 6; /* 파도 번호 + 파도의 기준점 번호 */
         this.max = y;
-        this.maxRatio = y / 10;
+        this.maxRatio = y / 12;
         this.moveRatio = 0;
         this.moveCnt = 0;
         this.waveCnt = 0;
@@ -47,8 +47,8 @@ export class Point {
                 this.max = this.y - this.fixedY;
             }
 
-            this.moveRatio = (this.max * 2) / 10;
-            this.maxRatio = this.max / 25;
+            this.moveRatio = (this.max * 2) / 12;
+            this.maxRatio = this.max / 17;
         }
     }
 
@@ -59,10 +59,10 @@ export class Point {
                 this.y -= this.moveRatio;
                 this.moveCnt++;
 
-                if (this.moveCnt === 10) {
+                if (this.moveCnt === 12) {
                     this.moveCnt = 0;
                     this.max -= this.maxRatio;
-                    this.moveRatio = (this.max * 2) / 10;
+                    this.moveRatio = (this.max * 2) / 12;
                     this.waveCnt++;
                     this.wave = false;
                 }
@@ -70,20 +70,20 @@ export class Point {
                 this.y += this.moveRatio;
                 this.moveCnt++;
 
-                if (this.moveCnt === 10) {
+                if (this.moveCnt === 12) {
                     this.moveCnt = 0;
                     this.max -= this.maxRatio;
-                    this.moveRatio = (this.max * 2) / 10;
+                    this.moveRatio = (this.max * 2) / 12;
                     this.waveCnt++;
                     this.wave = true;
                 }
             }
 
-            if (this.waveCnt === 25) {
+            if (this.waveCnt === 17) {
                 this.y = this.fixedY;
                 this.waveCnt = 0;
                 this.onClick = null;
-                this.cur = this.index * 8;
+                this.cur = this.index * 6;
             }
         } else if (this.onClick === false && this.cur > 0) this.cur--;
         else if (this.onClick === null) {
@@ -94,7 +94,7 @@ export class Point {
     }
 
     reset() {
-        this.cur = this.index * 8;
+        this.cur = this.index * 6;
         this.moveCnt = 0;
         this.waveCnt = 0;
         this.autoMax = 0;
